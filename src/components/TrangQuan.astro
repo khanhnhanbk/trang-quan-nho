@@ -1,0 +1,212 @@
+---
+// Một trang quán hoàn chỉnh. Mọi chữ lấy từ src/data/noi-dung.json, màu/font theo "nganh".
+import Base from '../layouts/Base.astro';
+import Icon from './Icon.astro';
+import data from '../data/noi-dung.json';
+const { quan: q } = Astro.props;
+const tatCa = data.quan;
+const map = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q.dia_chi)}`;
+const zalo = `https://zalo.me/${q.zalo}`;
+const tel = `tel:${q.dien_thoai.replace(/\s/g, '')}`;
+const href = (s) => (s === tatCa[0].slug ? '/' : `/${s}/`);
+const nav = [['#menu', q.nganh === 'dich-vu' ? 'Bảng giá' : 'Menu'], ['#khong-gian', 'Không gian'], ['#danh-gia', 'Đánh giá'], ['#tim-quan', 'Tìm đường']];
+const chay = [...q.chay_chu, ...q.chay_chu];
+const kichCo = ['sm:col-span-2 sm:row-span-2', '', '', 'sm:col-span-2'];
+---
+<Base title={`${q.ten} · ${q.khau_hieu.join(' ')}`} description={q.mo_ta} nganh={q.nganh}>
+  <!-- Dải chọn mẫu: chỉ có trên bản demo, bỏ khi giao cho khách -->
+  <div class="bg-ink text-bg text-xs">
+    <div class="mx-auto flex max-w-6xl items-center gap-3 overflow-x-auto px-4 py-2 whitespace-nowrap">
+      <span class="opacity-70">Trang mẫu, xem kiểu khác:</span>
+      {tatCa.map((t) => (
+        <a href={href(t.slug)} class:list={['rounded-full px-3 py-1 font-semibold', t.slug === q.slug ? 'bg-bg text-ink' : 'hover:bg-white/15']}
+          aria-current={t.slug === q.slug ? 'page' : undefined}>{t.nhan_nganh}</a>
+      ))}
+    </div>
+  </div>
+
+  <!-- Thanh trên dính (kính mờ) -->
+  <header class="glass sticky top-0 z-40 border-x-0 border-t-0">
+    <div class="mx-auto flex max-w-6xl items-center gap-3 px-4 py-3">
+      <a href="#top" class="flex items-center gap-2 font-bold text-brand">
+        <Icon nganh={q.nganh} class="size-8" />
+        <span class="display text-xl whitespace-nowrap text-ink">{q.ten}</span>
+      </a>
+      <nav class="ml-auto hidden items-center gap-1 text-sm font-medium md:flex">
+        {nav.map(([h, t]) => <a href={h} class="rounded-full px-3 py-2 text-muted hover:bg-soft hover:text-ink">{t}</a>)}
+      </nav>
+      <span class="ml-2 hidden lg:block">
+        <span class="open-badge hidden items-center gap-2 rounded-full bg-soft px-3 py-1.5 text-xs font-semibold" data-mo={q.gio.mo} data-dong={q.gio.dong} data-nghi={q.gio.nghi.join(',')}>
+          <span class="pulse size-2 rounded-full bg-emerald-500"></span><span class="open-text">Đang mở cửa</span>
+        </span>
+      </span>
+      <button id="themeBtn" aria-label="Đổi giao diện sáng/tối" class="ml-auto md:ml-0 size-10 shrink-0 rounded-full border border-line bg-card text-lg">🌙</button>
+    </div>
+  </header>
+
+  <main id="top" class="mx-auto max-w-6xl px-4 pb-28 md:pb-16">
+    <!-- ===== ĐẦU TRANG: lưới bento ===== -->
+    <section class="grid gap-3 pt-4 sm:grid-cols-2 lg:grid-cols-5">
+      <div class="mesh relative overflow-hidden rounded-tile p-6 text-white sm:col-span-2 lg:col-span-3 lg:row-span-2 lg:p-10">
+        <p class="mb-6 inline-flex rounded-full bg-white/20 px-3 py-1 text-xs font-semibold backdrop-blur">{q.nhan_nganh} · {q.dia_chi.split(', ').slice(-1)}</p>
+        <h1 class="display text-[clamp(2rem,8.4vw,3.75rem)] leading-[1.05]">
+          <span class="block">{q.khau_hieu[0]}</span><span class="block opacity-85">{q.khau_hieu[1]}</span>
+        </h1>
+        <p class="mt-5 max-w-md text-white/90">{q.mo_ta}</p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="#menu" class="inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 font-semibold text-[var(--g1)]">
+            {q.nganh === 'dich-vu' ? 'Xem bảng giá' : 'Xem menu'} <span class="nudge inline-block">↓</span>
+          </a>
+          <a href={zalo} class="inline-flex items-center rounded-full border border-white/50 px-5 py-3 font-semibold text-white hover:bg-white/10">
+            {q.nganh === 'dich-vu' ? 'Hẹn qua Zalo' : 'Nhắn Zalo'}
+          </a>
+        </div>
+      </div>
+
+      <div class="tile flex flex-col bg-accent! p-6 text-[#1b120c] lg:col-span-2">
+        <div class="flex items-start justify-between gap-4">
+          <div>
+            <p class="text-xs font-bold tracking-widest uppercase opacity-70">Bán chạy nhất</p>
+            <h2 class="display mt-1 text-3xl">{q.mon_noi_bat.ten}</h2>
+          </div>
+          <Icon nganh={q.nganh} class="size-14 shrink-0" />
+        </div>
+        <p class="mt-2 text-sm opacity-80">{q.mon_noi_bat.mo_ta}</p>
+        <p class="display mt-auto pt-4 text-4xl">{q.mon_noi_bat.gia}</p>
+      </div>
+
+      <div class="tile p-6">
+        <p class="text-xs font-bold tracking-widest text-muted uppercase">Giờ mở cửa</p>
+        <p class="display mt-2 text-3xl whitespace-nowrap lg:text-[1.6rem]">{q.gio.mo} – {q.gio.dong}</p>
+        <p class="mt-1 text-sm text-muted">{q.gio.chu.split(', ')[1]}</p>
+        <p class="open-badge mt-4 hidden items-center gap-2 text-sm font-semibold" data-mo={q.gio.mo} data-dong={q.gio.dong} data-nghi={q.gio.nghi.join(',')}>
+          <span class="pulse size-2 rounded-full bg-emerald-500"></span><span class="open-text">Đang mở cửa</span>
+        </p>
+      </div>
+
+      <a href={map} class="tile group flex flex-col p-6">
+        <p class="text-xs font-bold tracking-widest text-muted uppercase">Địa chỉ</p>
+        <p class="mt-2 font-semibold">{q.dia_chi}</p>
+        <p class="mt-auto pt-4 text-sm font-semibold text-brand">Chỉ đường <span class="inline-block transition-transform group-hover:translate-x-1">→</span></p>
+      </a>
+    </section>
+
+    <ul class="mt-3 flex flex-wrap gap-2" aria-label="Tiện ích">
+      {q.nhanh.map((n) => <li class="rounded-full border border-line bg-card px-4 py-2 text-sm font-medium">✓ {n}</li>)}
+    </ul>
+
+    <!-- Dải chữ chạy -->
+    <div class="relative mt-10 overflow-hidden rounded-tile bg-brand py-4 text-brand-ink" aria-hidden="true">
+      <div class="marquee flex w-max gap-8 whitespace-nowrap [mask-image:linear-gradient(90deg,transparent,#000_4%,#000_96%,transparent)]">
+        {chay.map((m) => <span class="display text-2xl">{m} <span class="text-accent">✦</span></span>)}
+      </div>
+    </div>
+
+    <!-- ===== MENU / BẢNG GIÁ ===== -->
+    <section id="menu" class="mt-16">
+      <div class="flex flex-wrap items-end justify-between gap-2">
+        <h2 class="display text-4xl sm:text-5xl">{q.nganh === 'dich-vu' ? 'Bảng giá' : 'Menu hôm nay'}</h2>
+        <p class="text-sm text-muted"><span class="rounded bg-accent/30 px-1.5 py-0.5 font-semibold text-ink">★ bán chạy</span></p>
+      </div>
+      <div class="mt-6 grid gap-3 md:grid-cols-2">
+        {q.menu.map((g) => (
+          <div class="tile reveal p-6 sm:p-8">
+            <h3 class="text-xs font-bold tracking-widest text-brand uppercase">{g.nhom}</h3>
+            <ul class="mt-4 space-y-3">
+              {g.mon.map((m) => (
+                <li class="leader">
+                  <span class="font-medium">{m.ten}{m.hot && <span class="ml-2 text-accent" title="Bán chạy">★</span>}</span>
+                  <span class="gia font-bold tabular-nums">{m.gia}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- ===== KHÔNG GIAN: ô lưới gradient, thay bằng ảnh thật khi có ===== -->
+    <section id="khong-gian" class="mt-16">
+      <h2 class="display text-4xl sm:text-5xl">Không gian</h2>
+      <div class="mt-6 grid auto-rows-[9rem] grid-cols-2 gap-3 sm:auto-rows-[11rem] sm:grid-cols-4">
+        {q.khong_gian.map((k, i) => (
+          <figure class:list={['mesh reveal relative flex items-end overflow-hidden rounded-tile p-4 text-white', kichCo[i]]}
+            style={['', '--g3: var(--c-accent)', '--g2: var(--g3)', '--g3: var(--g2); --g2: var(--c-accent)'][i]}>
+            <Icon nganh={q.nganh} class="absolute top-4 right-4 size-10 opacity-60" />
+            <figcaption class="rounded-full bg-black/25 px-3 py-1 text-sm font-semibold backdrop-blur">{k}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </section>
+
+    <!-- ===== ĐÁNH GIÁ ===== -->
+    <section id="danh-gia" class="mt-16">
+      <h2 class="display text-4xl sm:text-5xl">Khách nói gì</h2>
+      <div class="mt-6 grid gap-3 md:grid-cols-3">
+        {q.danh_gia.map((d) => (
+          <figure class="tile reveal flex flex-col p-6">
+            <p class="text-accent" aria-label="5 sao">★★★★★</p>
+            <blockquote class="mt-3 text-lg">“{d.loi}”</blockquote>
+            <figcaption class="mt-auto pt-4 text-sm text-muted">{d.ai}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </section>
+
+    <!-- ===== TÌM ĐƯỜNG ===== -->
+    <section id="tim-quan" class="mt-16 grid gap-3 lg:grid-cols-[1.4fr_1fr]">
+      <div class="mesh reveal rounded-tile p-8 text-white lg:p-12">
+        <h2 class="display text-4xl sm:text-5xl">Ghé {q.ten}</h2>
+        <p class="mt-4 text-lg text-white/90">{q.dia_chi}</p>
+        <p class="mt-1 text-white/80">{q.gio.chu}</p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href={map} class="rounded-full bg-white px-5 py-3 font-semibold text-[var(--g1)]">Mở Google Maps</a>
+          <a href={tel} class="rounded-full border border-white/50 px-5 py-3 font-semibold hover:bg-white/10">Gọi {q.dien_thoai}</a>
+        </div>
+      </div>
+      <div class="tile reveal flex flex-col justify-center p-8">
+        <p class="text-xs font-bold tracking-widest text-muted uppercase">{q.nganh === 'dich-vu' ? 'Đặt lịch' : 'Đặt bàn, đặt món'}</p>
+        <p class="display mt-2 text-3xl">Nhắn Zalo, quán trả lời trong 5 phút.</p>
+        <a href={zalo} class="mt-6 inline-flex w-fit rounded-full bg-brand px-5 py-3 font-semibold text-brand-ink">Nhắn Zalo {q.dien_thoai}</a>
+      </div>
+    </section>
+
+    <footer class="mt-16 flex flex-wrap justify-between gap-2 border-t border-line pt-6 text-sm text-muted">
+      <p>© 2026 {q.ten}</p>
+      <p>Trang mẫu do <a class="font-semibold text-brand underline-offset-4 hover:underline" href="https://lam-web-sinh-vien.vercel.app">KN</a> làm</p>
+    </footer>
+  </main>
+
+  <!-- Thanh nút dính đáy trên điện thoại -->
+  <nav class="glass fixed inset-x-3 bottom-3 z-40 grid grid-cols-3 gap-1 rounded-full p-1.5 text-sm font-semibold md:hidden" aria-label="Liên hệ nhanh">
+    <a href={tel} class="rounded-full py-3 text-center hover:bg-soft">Gọi</a>
+    <a href={zalo} class="rounded-full bg-brand py-3 text-center text-brand-ink">Zalo</a>
+    <a href={map} class="rounded-full py-3 text-center hover:bg-soft">Chỉ đường</a>
+  </nav>
+
+  <script is:inline>
+    // Nút sáng/tối
+    const root = document.documentElement, btn = document.getElementById('themeBtn');
+    const paint = () => (btn.textContent = root.dataset.theme === 'dark' ? '☀️' : '🌙');
+    paint();
+    btn.addEventListener('click', () => {
+      root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
+      try { localStorage.setItem('theme', root.dataset.theme); } catch (e) {}
+      paint();
+    });
+    // "Đang mở cửa / Đã đóng cửa" theo giờ Việt Nam
+    const vn = new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Ho_Chi_Minh', weekday: 'short', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' }).formatToParts(new Date());
+    const part = (t) => vn.find((p) => p.type === t).value;
+    const day = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].indexOf(part('weekday'));
+    const now = part('hour') + ':' + part('minute');
+    document.querySelectorAll('.open-badge').forEach((el) => {
+      const nghi = el.dataset.nghi ? el.dataset.nghi.split(',').map(Number) : [];
+      const open = !nghi.includes(day) && now >= el.dataset.mo && now < el.dataset.dong;
+      if (!open) {
+        el.querySelector('.open-text').textContent = 'Đã đóng cửa, mở lại ' + el.dataset.mo;
+        el.querySelector('.pulse').classList.replace('bg-emerald-500', 'bg-zinc-400');
+      }
+      el.classList.replace('hidden', 'inline-flex');
+    });
+  </script>
+</Base>

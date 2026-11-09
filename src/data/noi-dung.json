@@ -1,0 +1,346 @@
+{
+  "_ghi_chu": "Mỗi khối là một quán. Đổi chữ, giá, giờ mở cửa ở đây là trang tự đổi theo. 'nganh' quyết định màu, font và icon (xem src/styles/global.css).",
+  "quan": [
+    {
+      "slug": "ca-phe",
+      "nganh": "ca-phe",
+      "nhan_nganh": "Quán cà phê",
+      "ten": "Nhà Mơ Coffee",
+      "khau_hieu": [
+        "Cà phê pha chậm,",
+        "ngồi lâu cũng được."
+      ],
+      "mo_ta": "Quán nhỏ trong hẻm, có góc làm việc, ổ cắm ở mọi bàn và mèo tên Bơ.",
+      "mon_noi_bat": {
+        "ten": "Cà phê muối",
+        "gia": "29k",
+        "mo_ta": "Món bán chạy nhất quán: kem muối béo, cà phê đậm."
+      },
+      "nhanh": [
+        "Wi-Fi mạnh",
+        "Ổ cắm mọi bàn",
+        "Có chỗ để xe",
+        "Mang thú cưng được"
+      ],
+      "chay_chu": [
+        "Cà phê muối",
+        "Bạc xỉu",
+        "Trà đào cam sả",
+        "Matcha latte",
+        "Bánh croissant",
+        "Cold brew"
+      ],
+      "menu": [
+        {
+          "nhom": "Cà phê",
+          "mon": [
+            {
+              "ten": "Cà phê đen",
+              "gia": "20k"
+            },
+            {
+              "ten": "Cà phê sữa",
+              "gia": "25k"
+            },
+            {
+              "ten": "Cà phê muối",
+              "gia": "29k",
+              "hot": true
+            },
+            {
+              "ten": "Bạc xỉu",
+              "gia": "29k"
+            },
+            {
+              "ten": "Cold brew cam",
+              "gia": "39k"
+            }
+          ]
+        },
+        {
+          "nhom": "Trà & khác",
+          "mon": [
+            {
+              "ten": "Trà đào cam sả",
+              "gia": "35k",
+              "hot": true
+            },
+            {
+              "ten": "Trà vải",
+              "gia": "35k"
+            },
+            {
+              "ten": "Matcha latte",
+              "gia": "42k"
+            },
+            {
+              "ten": "Cacao nóng",
+              "gia": "35k"
+            },
+            {
+              "ten": "Croissant bơ",
+              "gia": "30k"
+            }
+          ]
+        }
+      ],
+      "khong_gian": [
+        "Góc cửa sổ",
+        "Bàn làm việc",
+        "Sân thượng",
+        "Quầy pha chế"
+      ],
+      "danh_gia": [
+        {
+          "loi": "Ngồi làm việc cả buổi chiều mà không ai hối. Cà phê muối ngon thiệt.",
+          "ai": "Khách quen, dân văn phòng"
+        },
+        {
+          "loi": "Hẻm nhỏ mà quán sạch, nhạc nhẹ, có mèo cho vuốt.",
+          "ai": "Khách ghé lần đầu"
+        },
+        {
+          "loi": "Giá dễ chịu, nhân viên nhớ luôn món mình hay gọi.",
+          "ai": "Sinh viên gần đó"
+        }
+      ],
+      "gio": {
+        "mo": "07:00",
+        "dong": "22:00",
+        "chu": "7:00 – 22:00, mở cả tuần",
+        "nghi": []
+      },
+      "dia_chi": "Hẻm 45 Lê Lợi, Hải Châu, Đà Nẵng",
+      "dien_thoai": "0905 123 456",
+      "zalo": "0905123456"
+    },
+    {
+      "slug": "quan-an",
+      "nganh": "quan-an",
+      "nhan_nganh": "Quán ăn",
+      "ten": "Cơm Nhà Bà Sáu",
+      "khau_hieu": [
+        "Cơm nhà nấu,",
+        "ăn no như ở nhà."
+      ],
+      "mo_ta": "Mỗi ngày 8 món mặn, canh nóng miễn phí, giao tận nơi trong bán kính 3 km.",
+      "mon_noi_bat": {
+        "ten": "Cá kho tộ",
+        "gia": "45k",
+        "mo_ta": "Kho bằng nồi đất, nước màu tự thắng, ăn kèm canh chua."
+      },
+      "nhanh": [
+        "Canh miễn phí",
+        "Giao trong 3 km",
+        "Đặt cơm văn phòng",
+        "Có món chay thứ Hai"
+      ],
+      "chay_chu": [
+        "Cá kho tộ",
+        "Thịt kho trứng",
+        "Canh chua",
+        "Gà chiên mắm",
+        "Rau muống xào tỏi",
+        "Sườn ram"
+      ],
+      "menu": [
+        {
+          "nhom": "Món mặn",
+          "mon": [
+            {
+              "ten": "Cá kho tộ",
+              "gia": "45k",
+              "hot": true
+            },
+            {
+              "ten": "Thịt kho trứng",
+              "gia": "40k"
+            },
+            {
+              "ten": "Gà chiên mắm",
+              "gia": "45k",
+              "hot": true
+            },
+            {
+              "ten": "Sườn ram mặn",
+              "gia": "45k"
+            },
+            {
+              "ten": "Đậu hũ nhồi thịt",
+              "gia": "35k"
+            }
+          ]
+        },
+        {
+          "nhom": "Canh & rau",
+          "mon": [
+            {
+              "ten": "Canh chua cá",
+              "gia": "25k"
+            },
+            {
+              "ten": "Canh bí đỏ",
+              "gia": "20k"
+            },
+            {
+              "ten": "Rau muống xào tỏi",
+              "gia": "20k"
+            },
+            {
+              "ten": "Cơm thêm",
+              "gia": "5k"
+            },
+            {
+              "ten": "Trà đá",
+              "gia": "Miễn phí"
+            }
+          ]
+        }
+      ],
+      "khong_gian": [
+        "Bếp mở",
+        "Bàn gia đình",
+        "Góc văn phòng",
+        "Mâm cơm"
+      ],
+      "danh_gia": [
+        {
+          "loi": "Ăn trưa ở đây gần một năm, món đổi mỗi ngày nên hông ngán.",
+          "ai": "Khách quen buổi trưa"
+        },
+        {
+          "loi": "Cá kho đúng vị nhà nấu, canh còn nóng khi giao tới.",
+          "ai": "Khách đặt giao tận nơi"
+        },
+        {
+          "loi": "Đặt cơm cho cả phòng 12 người, giao đúng giờ.",
+          "ai": "Khách đặt cơm văn phòng"
+        }
+      ],
+      "gio": {
+        "mo": "10:00",
+        "dong": "20:30",
+        "chu": "10:00 – 20:30, nghỉ Chủ nhật",
+        "nghi": [
+          0
+        ]
+      },
+      "dia_chi": "27 Nguyễn Chí Thanh, Hải Châu, Đà Nẵng",
+      "dien_thoai": "0905 654 321",
+      "zalo": "0905654321"
+    },
+    {
+      "slug": "tiem-dich-vu",
+      "nganh": "dich-vu",
+      "nhan_nganh": "Tiệm dịch vụ",
+      "ten": "Mây Nail & Hair",
+      "khau_hieu": [
+        "Làm đẹp nhẹ nhàng,",
+        "hẹn trước khỏi chờ."
+      ],
+      "mo_ta": "Tiệm nhỏ 4 ghế, làm móng và tóc. Nhắn Zalo giữ chỗ, tới là làm liền.",
+      "mon_noi_bat": {
+        "ten": "Sơn gel + dưỡng",
+        "gia": "120k",
+        "mo_ta": "Giữ màu 3 tuần, có hơn 200 màu để chọn."
+      },
+      "nhanh": [
+        "Hẹn qua Zalo",
+        "Dụng cụ tiệt trùng",
+        "Có chỗ ngồi chờ",
+        "Nhận thẻ, chuyển khoản"
+      ],
+      "chay_chu": [
+        "Sơn gel",
+        "Đắp bột",
+        "Cắt tóc nữ",
+        "Gội dưỡng sinh",
+        "Nhuộm tóc",
+        "Uốn phồng"
+      ],
+      "menu": [
+        {
+          "nhom": "Móng",
+          "mon": [
+            {
+              "ten": "Cắt da, sơn thường",
+              "gia": "60k"
+            },
+            {
+              "ten": "Sơn gel + dưỡng",
+              "gia": "120k",
+              "hot": true
+            },
+            {
+              "ten": "Đắp bột",
+              "gia": "250k"
+            },
+            {
+              "ten": "Vẽ, đính đá (mỗi ngón)",
+              "gia": "10k"
+            },
+            {
+              "ten": "Tháo gel",
+              "gia": "30k"
+            }
+          ]
+        },
+        {
+          "nhom": "Tóc",
+          "mon": [
+            {
+              "ten": "Cắt tóc nữ",
+              "gia": "80k"
+            },
+            {
+              "ten": "Gội dưỡng sinh",
+              "gia": "70k",
+              "hot": true
+            },
+            {
+              "ten": "Nhuộm tóc",
+              "gia": "từ 350k"
+            },
+            {
+              "ten": "Uốn phồng",
+              "gia": "từ 450k"
+            },
+            {
+              "ten": "Hấp phục hồi",
+              "gia": "150k"
+            }
+          ]
+        }
+      ],
+      "khong_gian": [
+        "Ghế làm móng",
+        "Bảng màu gel",
+        "Góc gội đầu",
+        "Quầy đón khách"
+      ],
+      "danh_gia": [
+        {
+          "loi": "Hẹn qua Zalo, tới đúng giờ là làm liền, hông phải ngồi chờ.",
+          "ai": "Khách làm móng hằng tháng"
+        },
+        {
+          "loi": "Gội dưỡng sinh xong nhẹ đầu hẳn, giá hợp lý.",
+          "ai": "Khách ghé lần đầu"
+        },
+        {
+          "loi": "Sơn gel giữ được gần một tháng mới tróc.",
+          "ai": "Khách quen của tiệm"
+        }
+      ],
+      "gio": {
+        "mo": "09:00",
+        "dong": "21:00",
+        "chu": "9:00 – 21:00, mở cả tuần",
+        "nghi": []
+      },
+      "dia_chi": "88 Hàm Nghi, Thanh Khê, Đà Nẵng",
+      "dien_thoai": "0905 777 888",
+      "zalo": "0905777888"
+    }
+  ]
+}

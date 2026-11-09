@@ -1,0 +1,9 @@
+---
+// Các quán còn lại: /quan-an/, /tiem-dich-vu/ ... tự sinh từ noi-dung.json
+import TrangQuan from '../components/TrangQuan.astro';
+import data from '../data/noi-dung.json';
+export function getStaticPaths() {
+  return data.quan.slice(1).map((q) => ({ params: { slug: q.slug }, props: { quan: q } }));
+}
+---
+<TrangQuan quan={Astro.props.quan} />

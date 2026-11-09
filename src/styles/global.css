@@ -1,0 +1,131 @@
+/* ===== THEME: chỉ sửa ở file này khi đổi màu/font cho khách ===== */
+@import "tailwindcss";
+
+/* Chế độ tối theo data-theme trên <html> (nút sáng/tối) */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* ---- Mỗi ngành một bộ màu + font tiêu đề. Đặt data-nganh="..." trên <html> ---- */
+:root, [data-nganh="ca-phe"] {
+  --c-bg: #f6efe6;  --c-card: #fffaf3; --c-ink: #2b1d14; --c-muted: #6f5b4c; --c-line: #e6d8c6;
+  --c-brand: #6b3e26; --c-brand-ink: #fff8ef; --c-soft: #efdfcb; --c-accent: #d9824b;
+  --f-display: "Fraunces", Georgia, serif; --display-weight: 600; --display-style: normal;
+  --g1: #6b3e26; --g2: #a8653c; --g3: #e2a66f;
+}
+[data-nganh="ca-phe"][data-theme="dark"] {
+  --c-bg: #17110d; --c-card: #211812; --c-ink: #f3e7da; --c-muted: #bba593; --c-line: #3a2c22;
+  --c-brand: #e2a66f; --c-brand-ink: #1b120c; --c-soft: #2d2018; --c-accent: #e98f55;
+}
+[data-nganh="quan-an"] {
+  --c-bg: #fff6ea; --c-card: #ffffff; --c-ink: #2a1410; --c-muted: #7a5a50; --c-line: #f0dcc6;
+  --c-brand: #b5361f; --c-brand-ink: #fff7ec; --c-soft: #fde6c9; --c-accent: #f2b134;
+  --f-display: "Be Vietnam Pro", system-ui, sans-serif; --display-weight: 800; --display-style: normal;
+  --g1: #b5361f; --g2: #d9542c; --g3: #f2b134;
+}
+[data-nganh="quan-an"][data-theme="dark"] {
+  --c-bg: #1a0f0c; --c-card: #251512; --c-ink: #fbeee2; --c-muted: #c9a99c; --c-line: #3d2620;
+  --c-brand: #ff7a5c; --c-brand-ink: #1f0c08; --c-soft: #33201a; --c-accent: #f2b134;
+}
+[data-nganh="dich-vu"] {
+  --c-bg: #fbf5f7; --c-card: #ffffff; --c-ink: #24203a; --c-muted: #6a6380; --c-line: #ecdfe6;
+  --c-brand: #3b3363; --c-brand-ink: #ffffff; --c-soft: #fbe3ea; --c-accent: #ff8fab;
+  --f-display: "Playfair Display", Georgia, serif; --display-weight: 700; --display-style: italic;
+  --g1: #3b3363; --g2: #8a5a9c; --g3: #ff8fab;
+}
+[data-nganh="dich-vu"][data-theme="dark"] {
+  --c-bg: #13111d; --c-card: #1c1a2a; --c-ink: #f1edf8; --c-muted: #aaa2c0; --c-line: #2f2b44;
+  --c-brand: #c9b8ff; --c-brand-ink: #15122a; --c-soft: #2b2238; --c-accent: #ff8fab;
+}
+
+/* Đưa biến vào Tailwind để dùng như class: bg-bg, text-ink, bg-brand, border-line... */
+@theme inline {
+  --color-bg: var(--c-bg);
+  --color-card: var(--c-card);
+  --color-ink: var(--c-ink);
+  --color-muted: var(--c-muted);
+  --color-line: var(--c-line);
+  --color-brand: var(--c-brand);
+  --color-brand-ink: var(--c-brand-ink);
+  --color-soft: var(--c-soft);
+  --color-accent: var(--c-accent);
+  --font-sans: "Be Vietnam Pro", system-ui, sans-serif;
+  --font-display: var(--f-display);
+  --radius-tile: 1.5rem;
+}
+
+/* ===== Nền chung ===== */
+html { background: var(--c-bg); color: var(--c-ink); scroll-padding-top: 5.5rem; }
+/* Rule cuộn mượt: bấm link # thì trượt xuống, tôn trọng người tắt chuyển động */
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+/* Để trong @layer base để class Tailwind (whitespace-nowrap...) vẫn ghi đè được */
+@layer base { h1, h2, h3, p { text-wrap: balance; } }  /* chống chữ lẻ rơi xuống dòng */
+.display { font-family: var(--f-display); font-weight: var(--display-weight); font-style: var(--display-style); letter-spacing: -0.02em; }
+
+/* Màn lớn: phóng to theo rem để không trống hai bên */
+@media (min-width: 1800px) { html { font-size: 112.5%; } }
+@media (min-width: 2400px) { html { font-size: 125%; } }
+
+/* Hạt nhiễu (grain) phủ cả trang cho cảm giác "tay làm". SVG nhỏ, không tải ảnh ngoài */
+body::before {
+  content: ""; position: fixed; inset: 0; z-index: 60; pointer-events: none; opacity: .07; mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+[data-theme="dark"] body::before { mix-blend-mode: screen; opacity: .05; }
+
+@layer components {
+  /* Ô bento */
+  .tile { background: var(--c-card); border: 1px solid var(--c-line); border-radius: var(--radius-tile); transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s; }
+  .tile:hover { transform: translateY(-3px); box-shadow: 0 14px 30px -18px rgb(0 0 0 / .35); }
+  /* Ô gradient lưới (mesh gradient) dùng cho ô ảnh không gian */
+  .mesh {
+    background:
+      radial-gradient(60% 70% at 15% 20%, color-mix(in oklab, var(--g3) 85%, transparent), transparent 70%),
+      radial-gradient(55% 60% at 85% 30%, color-mix(in oklab, var(--g2) 80%, transparent), transparent 70%),
+      radial-gradient(80% 80% at 50% 100%, var(--g1), transparent 75%),
+      var(--g1);
+  }
+  /* Kính mờ: thanh menu dính trên + thanh nút dính đáy */
+  .glass {
+    background: color-mix(in oklab, var(--c-card) 96%, transparent);
+    border: 1px solid color-mix(in oklab, var(--c-line) 80%, transparent);
+    backdrop-filter: blur(14px) saturate(150%);
+    -webkit-backdrop-filter: blur(14px) saturate(150%);
+  }
+  /* Dòng menu: tên ...... giá */
+  .leader { display: flex; align-items: baseline; gap: .5rem; }
+  .leader::after { content: ""; order: 1; flex: 1; border-bottom: 2px dotted var(--c-line); transform: translateY(-.25em); }
+  .leader > .gia { order: 2; }
+}
+
+/* ===== ICON ĐỘNG BẰNG CSS THUẦN (không JS) ===== */
+/* Hơi nóng bốc lên từ ly/tô */
+.steam path { stroke-dasharray: 20; animation: steam 2.6s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom; }
+.steam path:nth-child(2) { animation-delay: .5s; }
+.steam path:nth-child(3) { animation-delay: 1s; }
+@keyframes steam { 0% { opacity: 0; transform: translateY(6px) scaleY(.8); } 40% { opacity: .9; } 100% { opacity: 0; transform: translateY(-8px) scaleY(1.1); } }
+/* Lấp lánh cho tiệm làm đẹp */
+.sparkle { transform-box: fill-box; transform-origin: center; animation: sparkle 2.2s ease-in-out infinite; }
+.sparkle:nth-of-type(2) { animation-delay: .7s; }
+.sparkle:nth-of-type(3) { animation-delay: 1.4s; }
+@keyframes sparkle { 0%,100% { transform: scale(.4) rotate(0); opacity: .2; } 50% { transform: scale(1) rotate(45deg); opacity: 1; } }
+/* Chấm "Đang mở cửa" */
+.pulse { position: relative; }
+.pulse::after { content: ""; position: absolute; inset: 0; border-radius: 999px; background: inherit; animation: pulse 1.8s ease-out infinite; }
+@keyframes pulse { from { transform: scale(1); opacity: .7; } to { transform: scale(2.6); opacity: 0; } }
+/* Dải chữ chạy ngang */
+.marquee { animation: marquee 28s linear infinite; }
+@keyframes marquee { to { transform: translateX(-50%); } }
+/* Mũi tên nhún nhẹ */
+.nudge { animation: nudge 1.6s ease-in-out infinite; }
+@keyframes nudge { 50% { transform: translateY(4px); } }
+
+/* Hiện dần khi cuộn tới: CSS scroll-driven animation (trình duyệt cũ thì vẫn hiện bình thường) */
+@supports (animation-timeline: view()) {
+  .reveal { animation: reveal linear both; animation-timeline: view(); animation-range: entry 0% cover 28%; }
+  @keyframes reveal { from { opacity: 0; transform: translateY(28px) scale(.98); } to { opacity: 1; transform: none; } }
+}
+
+/* Người tắt chuyển động: dừng hết hiệu ứng */
+@media (prefers-reduced-motion: reduce) {
+  .steam path, .sparkle, .pulse::after, .marquee, .nudge, .reveal { animation: none !important; }
+  .tile:hover { transform: none; }
+}

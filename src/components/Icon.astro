@@ -1,0 +1,30 @@
+---
+// Icon động theo ngành, vẽ bằng SVG + CSS (xem mục ICON ĐỘNG trong global.css). Không cần JS.
+const { nganh = 'ca-phe', class: cls = 'size-12' } = Astro.props;
+---
+{nganh === 'ca-phe' && (
+  <svg class={cls} viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <g class="steam"><path d="M17 15c-2-3 2-4 0-7" /><path d="M24 15c-2-3 2-4 0-7" /><path d="M31 15c-2-3 2-4 0-7" /></g>
+    <path d="M10 20h28v8a12 12 0 0 1-12 12h-4a12 12 0 0 1-12-12z" />
+    <path d="M38 23h2a4 4 0 0 1 0 8h-3" />
+    <path d="M8 44h32" />
+  </svg>
+)}
+{nganh === 'quan-an' && (
+  <svg class={cls} viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <g class="steam"><path d="M17 16c-2-3 2-4 0-7" /><path d="M24 16c-2-3 2-4 0-7" /><path d="M31 16c-2-3 2-4 0-7" /></g>
+    <path d="M6 22h36a18 14 0 0 1-36 0z" />
+    <path d="M18 40h12" />
+    <path d="M34 6l-6 14M40 8l-9 12" />
+  </svg>
+)}
+{nganh === 'dich-vu' && (
+  <svg class={cls} viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <rect x="16" y="6" width="10" height="12" rx="2" />
+    <path d="M13 18h16v20a4 4 0 0 1-4 4h-8a4 4 0 0 1-4-4z" />
+    <path d="M17 26h8" />
+    <path class="sparkle" d="M38 8v8M34 12h8" />
+    <path class="sparkle" d="M40 26v6M37 29h6" />
+    <path class="sparkle" d="M7 30v6M4 33h6" />
+  </svg>
+)}
