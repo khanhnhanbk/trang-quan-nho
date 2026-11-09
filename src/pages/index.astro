@@ -1,0 +1,6 @@
+---
+// Trang chủ = quán đầu tiên trong noi-dung.json (mẫu quán cà phê)
+import TrangQuan from '../components/TrangQuan.astro';
+import data from '../data/noi-dung.json';
+---
+<TrangQuan quan={data.quan[0]} />

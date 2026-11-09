@@ -1,0 +1,11 @@
+// Cấu hình Cloudflare Workers: chỉ phục vụ file tĩnh Astro build ra trong ./dist
+{
+  "name": "trang-quan-nho",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "404-page"
+  },
+  // Bắt buộc để Cloudflare tạo bản xem trước cho mỗi PR (lệnh `wrangler preview`). Để trống là đủ.
+  "previews": {}
+}
