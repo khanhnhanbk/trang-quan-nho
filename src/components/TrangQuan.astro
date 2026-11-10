@@ -57,7 +57,7 @@ const kichCo = ['sm:col-span-2 sm:row-span-2', '', '', 'sm:col-span-2'];
           <a href="#menu" class="inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 font-semibold text-[var(--g1)]">
             {q.nganh === 'dich-vu' ? 'Xem bảng giá' : 'Xem menu'} <span class="nudge inline-block">↓</span>
           </a>
-          <a href={zalo} class="inline-flex items-center rounded-full border border-white/50 px-5 py-3 font-semibold text-white hover:bg-white/10">
+          <a href={zalo} target="_blank" rel="noopener" class="inline-flex items-center rounded-full border border-white/50 px-5 py-3 font-semibold text-white hover:bg-white/10">
             {q.nganh === 'dich-vu' ? 'Hẹn qua Zalo' : 'Nhắn Zalo'}
           </a>
         </div>
@@ -84,7 +84,7 @@ const kichCo = ['sm:col-span-2 sm:row-span-2', '', '', 'sm:col-span-2'];
         </p>
       </div>
 
-      <a href={map} class="tile group flex flex-col p-6">
+      <a href={map} target="_blank" rel="noopener" class="tile group flex flex-col p-6">
         <p class="text-xs font-bold tracking-widest text-muted uppercase">Địa chỉ</p>
         <p class="mt-2 font-semibold">{q.dia_chi}</p>
         <p class="mt-auto pt-4 text-sm font-semibold text-brand">Chỉ đường <span class="inline-block transition-transform group-hover:translate-x-1">→</span></p>
@@ -160,28 +160,28 @@ const kichCo = ['sm:col-span-2 sm:row-span-2', '', '', 'sm:col-span-2'];
         <p class="mt-4 text-lg text-white/90">{q.dia_chi}</p>
         <p class="mt-1 text-white/80">{q.gio.chu}</p>
         <div class="mt-8 flex flex-wrap gap-3">
-          <a href={map} class="rounded-full bg-white px-5 py-3 font-semibold text-[var(--g1)]">Mở Google Maps</a>
+          <a href={map} target="_blank" rel="noopener" class="rounded-full bg-white px-5 py-3 font-semibold text-[var(--g1)]">Mở Google Maps</a>
           <a href={tel} class="rounded-full border border-white/50 px-5 py-3 font-semibold hover:bg-white/10">Gọi {q.dien_thoai}</a>
         </div>
       </div>
       <div class="tile reveal flex flex-col justify-center p-8">
         <p class="text-xs font-bold tracking-widest text-muted uppercase">{q.nganh === 'dich-vu' ? 'Đặt lịch' : 'Đặt bàn, đặt món'}</p>
         <p class="display mt-2 text-3xl">Nhắn Zalo, quán trả lời trong 5 phút.</p>
-        <a href={zalo} class="mt-6 inline-flex w-fit rounded-full bg-brand px-5 py-3 font-semibold text-brand-ink">Nhắn Zalo {q.dien_thoai}</a>
+        <a href={zalo} target="_blank" rel="noopener" class="mt-6 inline-flex w-fit rounded-full bg-brand px-5 py-3 font-semibold text-brand-ink">Nhắn Zalo {q.dien_thoai}</a>
       </div>
     </section>
 
     <footer class="mt-16 flex flex-wrap justify-between gap-2 border-t border-line pt-6 text-sm text-muted">
       <p>© 2026 {q.ten}</p>
-      <p>Trang mẫu do <a class="font-semibold text-brand underline-offset-4 hover:underline" href="https://lam-web-sinh-vien.vercel.app">KN</a> làm</p>
+      <p>Trang mẫu do <a class="font-semibold text-brand underline-offset-4 hover:underline" href="https://lam-web-sinh-vien.vercel.app" target="_blank" rel="noopener">KN</a> làm</p>
     </footer>
   </main>
 
   <!-- Thanh nút dính đáy trên điện thoại -->
   <nav class="glass fixed inset-x-3 bottom-3 z-40 grid grid-cols-3 gap-1 rounded-full p-1.5 text-sm font-semibold md:hidden" aria-label="Liên hệ nhanh">
     <a href={tel} class="rounded-full py-3 text-center hover:bg-soft">Gọi</a>
-    <a href={zalo} class="rounded-full bg-brand py-3 text-center text-brand-ink">Zalo</a>
-    <a href={map} class="rounded-full py-3 text-center hover:bg-soft">Chỉ đường</a>
+    <a href={zalo} target="_blank" rel="noopener" class="rounded-full bg-brand py-3 text-center text-brand-ink">Zalo</a>
+    <a href={map} target="_blank" rel="noopener" class="rounded-full py-3 text-center hover:bg-soft">Chỉ đường</a>
   </nav>
 
   <script is:inline>
